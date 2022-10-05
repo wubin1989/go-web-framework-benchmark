@@ -18,7 +18,7 @@ test_web_framework()
 {
   echo "testing web framework: $2"
   ./$server_bin_name $2 $3 &
-  sleep 2
+  sleep 15
 
   throughput=`wrk -t$cpu_cores -c$4 -d30s http://127.0.0.1:8080/hello | grep Requests/sec | awk '{print $2}'`
   echo "throughput: $throughput requests/second"
@@ -58,26 +58,26 @@ test_all 500 5000
 echo "500 ms,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
 
 
-echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > concurrency.csv
-test_all 30 100
-echo "100,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
-test_all 30 1000
-echo "1000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
-test_all 30 5000
-echo "5000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
+# echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > concurrency.csv
+# test_all 30 100
+#echo "100,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
+#test_all 30 1000
+#echo "1000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
+#test_all 30 5000
+#echo "5000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
 
 
-test_all -1 5000
-echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > cpubound.csv
-echo "cpu-bound,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound.csv
+#test_all -1 5000
+#echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > cpubound.csv
+#echo "cpu-bound,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound.csv
 
-echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > cpubound-concurrency.csv
-test_all -1 100
-echo "100,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
-test_all -1 1000
-echo "1000,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
-test_all -1 5000
-echo "5000,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
+#echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > cpubound-concurrency.csv
+#test_all -1 100
+#echo "100,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
+#test_all -1 1000
+#echo "1000,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
+#test_all -1 5000
+#echo "5000,"$(IFS=$','; echo "${test_result[*]}" ) >> cpubound-concurrency.csv
 
 
 mv -f processtime.csv ./testresults

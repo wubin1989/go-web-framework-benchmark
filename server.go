@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	ddhttp "github.com/unionj-cloud/go-doudou/framework/http"
+	ddhttprouter "github.com/unionj-cloud/go-doudou/framework/http/httprouter"
 	"io"
 	"io/ioutil"
 	"log"
@@ -73,6 +75,8 @@ import (
 	gcontext "golang.org/x/net/context"
 	baa "gopkg.in/baa.v1"
 	lion "gopkg.in/celrenheit/lion.v1"
+
+	zrouter "github.com/zeromicro/go-zero/rest/router"
 )
 
 var (
@@ -185,6 +189,8 @@ func main() {
 		startGorouterFastHTTP()
 	case "go-ozzo":
 		startGoozzo()
+	case "go-zero":
+		startGoZero()
 	case "gowww":
 		startGowww()
 	case "httprouter":
@@ -227,6 +233,10 @@ func main() {
 		startWebgo()
 	case "goyave":
 		startGoyave()
+	case "go-doudou(gorilla)":
+		startGoDoudouGorilla()
+	case "go-doudou(httprouter)":
+		startGoDoudouHttprouter()
 	default:
 		fmt.Println("--------------------------------------------------------------------")
 		fmt.Println("------------- Unknown framework given!!! Check libs.sh -------------")
@@ -887,6 +897,25 @@ func startGoozzo() {
 	http.ListenAndServe(":"+strconv.Itoa(port), r)
 }
 
+func zeroHandler(w http.ResponseWriter, r *http.Request) {
+	if cpuBound {
+		pow(target)
+	} else {
+		if sleepTime > 0 {
+			time.Sleep(sleepTimeDuration)
+		} else {
+			runtime.Gosched()
+		}
+	}
+	w.Write(message)
+}
+
+func startGoZero() {
+	r := zrouter.NewRouter()
+	r.Handle(http.MethodGet, "/hello", http.HandlerFunc(zeroHandler))
+	http.ListenAndServe(":"+strconv.Itoa(port), r)
+}
+
 // gowww
 func startGowww() {
 	rt := gowwwrouter.New()
@@ -1265,6 +1294,32 @@ func startGoyave() {
 	if err := goyave.Start(getGoyaveRoutes); err != nil {
 		os.Exit(err.(*goyave.Error).ExitCode)
 	}
+}
+
+func startGoDoudouGorilla() {
+	mux := ddhttp.NewDefaultHttpSrv()
+	mux.HandleFunc("/hello", helloHandler).Methods("GET")
+	http.ListenAndServe(":"+strconv.Itoa(port), mux)
+}
+
+// go-doudou(httprouter)
+func ddhttpRouterHandler(w http.ResponseWriter, _ *http.Request, ps ddhttprouter.Params) {
+	if cpuBound {
+		pow(target)
+	} else {
+		if sleepTime > 0 {
+			time.Sleep(sleepTimeDuration)
+		} else {
+			runtime.Gosched()
+		}
+	}
+	w.Write(message)
+}
+
+func startGoDoudouHttprouter() {
+	mux := ddhttp.NewHttpRouterSrv()
+	mux.Router.GET("/hello", ddhttpRouterHandler)
+	http.ListenAndServe(":"+strconv.Itoa(port), mux.RootRouter())
 }
 
 // mock

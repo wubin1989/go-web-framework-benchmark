@@ -20,7 +20,7 @@ test_web_framework()
 {
   echo "testing web framework: $2"
   ./$server_bin_name $2 $3 > alloc.log 2>&1 &
-  sleep 2
+  sleep 15
   wrk -t$cpu_cores -c$4 -d30s -H 'Connection: Close' http://127.0.0.1:8080/hello > tmp.log
   throughput=`cat tmp.log|grep Requests/sec|awk '{print $2}'`
   latency=`cat tmp.log|grep Latency | awk '{print $2}'`
@@ -76,21 +76,21 @@ echo "500 ms,"$(IFS=$','; echo "${test_alloc_result[*]}" ) >> processtime_alloc.
 
 
 
-echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > concurrency.csv
-echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > concurrency_latency.csv
-echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > concurrency_alloc.csv
-test_all 30 100
-echo "100,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
-echo "100,"$(IFS=$','; echo "${test_latency_result[*]}" ) >> concurrency_latency.csv
-echo "100,"$(IFS=$','; echo "${test_alloc_result[*]}" ) >> concurrency_alloc.csv
-test_all 30 1000
-echo "1000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
-echo "1000,"$(IFS=$','; echo "${test_latency_result[*]}" ) >> concurrency_latency.csv
-echo "1000,"$(IFS=$','; echo "${test_alloc_result[*]}" ) >> concurrency_alloc.csv
-test_all 30 5000
-echo "5000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
-echo "5000,"$(IFS=$','; echo "${test_latency_result[*]}" ) >> concurrency_latency.csv
-echo "5000,"$(IFS=$','; echo "${test_alloc_result[*]}" ) >> concurrency_alloc.csv
+#echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > concurrency.csv
+#echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > concurrency_latency.csv
+#echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > concurrency_alloc.csv
+#test_all 30 100
+#echo "100,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
+#echo "100,"$(IFS=$','; echo "${test_latency_result[*]}" ) >> concurrency_latency.csv
+#echo "100,"$(IFS=$','; echo "${test_alloc_result[*]}" ) >> concurrency_alloc.csv
+#test_all 30 1000
+#echo "1000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
+#echo "1000,"$(IFS=$','; echo "${test_latency_result[*]}" ) >> concurrency_latency.csv
+#echo "1000,"$(IFS=$','; echo "${test_alloc_result[*]}" ) >> concurrency_alloc.csv
+#test_all 30 5000
+#echo "5000,"$(IFS=$','; echo "${test_result[*]}" ) >> concurrency.csv
+#echo "5000,"$(IFS=$','; echo "${test_latency_result[*]}" ) >> concurrency_latency.csv
+#echo "5000,"$(IFS=$','; echo "${test_alloc_result[*]}" ) >> concurrency_alloc.csv
 
 mv -f processtime.csv ./testresults
 mv -f processtime_alloc.csv ./testresults
