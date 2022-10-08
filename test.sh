@@ -18,7 +18,7 @@ test_web_framework()
 {
   echo "testing web framework: $2"
   ./$server_bin_name $2 $3 &
-  sleep 15
+  sleep 10
 
   throughput=`wrk -t$cpu_cores -c$4 -d30s http://127.0.0.1:8080/hello | grep Requests/sec | awk '{print $2}'`
   echo "throughput: $throughput requests/second"
@@ -48,13 +48,13 @@ test_all()
 pkill -9 $server_bin_name
 
 echo ","$(IFS=$','; echo "${web_frameworks[*]}" ) > processtime.csv
-test_all 0 5000
+test_all 0 1000
 echo "0 ms,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
-test_all 10 5000
+test_all 10 1000
 echo "10 ms,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
-test_all 100 5000
+test_all 100 1000
 echo "100 ms,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
-test_all 500 5000
+test_all 500 1000
 echo "500 ms,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
 
 
@@ -81,6 +81,6 @@ echo "500 ms,"$(IFS=$','; echo "${test_result[*]}" ) >> processtime.csv
 
 
 mv -f processtime.csv ./testresults
-mv -f concurrency.csv ./testresults
-mv -f cpubound.csv ./testresults
-mv -f cpubound-concurrency.csv ./testresults
+#mv -f concurrency.csv ./testresults
+#mv -f cpubound.csv ./testresults
+#mv -f cpubound-concurrency.csv ./testresults

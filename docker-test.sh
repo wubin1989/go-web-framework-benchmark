@@ -2,8 +2,9 @@
 
 chmod +x *.sh
 
-./test-latency.sh
-./test-pipelining.sh
+./test.sh
+#./test-latency.sh
+#./test-pipelining.sh
 cd testresults
 ./plot.sh
 cd ..

@@ -54,7 +54,7 @@ require (
 	github.com/teambition/gear v1.26.0
 	github.com/tockins/fresh v0.0.0-20220719194346-eee4eda4271e
 	github.com/urfave/negroni v1.0.0
-	github.com/valyala/fasthttp v1.38.0
+	github.com/valyala/fasthttp v1.40.0
 	github.com/vanng822/r2router v0.0.0-20150523112421-1023140a4f30
 	github.com/vardius/gorouter/v4 v4.5.1
 	go101.org/tinyrouter v1.0.1
@@ -103,7 +103,7 @@ require (
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/jonboulle/clockwork v0.3.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
-	github.com/klauspost/compress v1.15.9 // indirect
+	github.com/klauspost/compress v1.15.11 // indirect
 	github.com/labstack/gommon v0.3.1 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
@@ -136,7 +136,7 @@ require (
 	go.opentelemetry.io/otel/sdk v1.10.0 // indirect
 	go.opentelemetry.io/otel/trace v1.10.0 // indirect
 	golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa // indirect
-	golang.org/x/sys v0.0.0-20220731174439-a90be440212d // indirect
+	golang.org/x/sys v0.0.0-20221006211917-84dc82d7e875 // indirect
 	golang.org/x/term v0.0.0-20220722155259-a9ba230a4035 // indirect
 	golang.org/x/text v0.3.8-0.20211105212822-18b340fc7af2 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
@@ -149,7 +149,7 @@ require (
 
 require (
 	github.com/partialize/echo-slim/v4 v4.7.2-slim.5
-	github.com/unionj-cloud/go-doudou v1.3.4-0.20221005115833-f516fb202b97
+	github.com/unionj-cloud/go-doudou v1.3.6-0.20221008112753-de6877e63a1e
 	github.com/zeromicro/go-zero v1.4.1
 )
 
@@ -161,7 +161,10 @@ require (
 	github.com/ascarter/requestid v0.0.0-20170313220838-5b76ab3d4aee // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/common-nighthawk/go-figure v0.0.0-20200609044655-c4b36f998cf2 // indirect
+	github.com/d7561985/opentracefasthttp v1.0.0 // indirect
+	github.com/elithrar/simple-scrypt v1.3.0 // indirect
 	github.com/felixge/httpsnoop v1.0.2 // indirect
+	github.com/ferluci/fast-realip v1.0.1 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-errors/errors v1.4.2 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
