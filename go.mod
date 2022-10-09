@@ -149,7 +149,7 @@ require (
 
 require (
 	github.com/partialize/echo-slim/v4 v4.7.2-slim.5
-	github.com/unionj-cloud/go-doudou v1.3.6-0.20221008112753-de6877e63a1e
+	github.com/unionj-cloud/go-doudou v1.3.6-0.20221009063436-3fb74ab6bdca
 	github.com/zeromicro/go-zero v1.4.1
 )
 
