@@ -149,7 +149,7 @@ require (
 
 require (
 	github.com/partialize/echo-slim/v4 v4.7.2-slim.5
-	github.com/unionj-cloud/go-doudou v1.3.6-0.20221009063436-3fb74ab6bdca
+	github.com/unionj-cloud/go-doudou v1.3.6
 	github.com/zeromicro/go-zero v1.4.1
 )
 
@@ -161,10 +161,7 @@ require (
 	github.com/ascarter/requestid v0.0.0-20170313220838-5b76ab3d4aee // indirect
 	github.com/buger/jsonparser v1.1.1 // indirect
 	github.com/common-nighthawk/go-figure v0.0.0-20200609044655-c4b36f998cf2 // indirect
-	github.com/d7561985/opentracefasthttp v1.0.0 // indirect
-	github.com/elithrar/simple-scrypt v1.3.0 // indirect
 	github.com/felixge/httpsnoop v1.0.2 // indirect
-	github.com/ferluci/fast-realip v1.0.1 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-errors/errors v1.4.2 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
@@ -208,6 +205,7 @@ require (
 	github.com/tklauser/numcpus v0.4.0 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
+	github.com/ucarion/urlpath v0.0.0-20200424170820-7ccc79b76bbb // indirect
 	github.com/wubin1989/nacos-sdk-go v1.1.2-0.20220706053037-873d23c0d56d // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
 	go.uber.org/atomic v1.9.0 // indirect

@@ -7,6 +7,5 @@
 #"neo" "pat" "pure" "r2router" "tango" "tiger" "tinyrouter" "traffic" "violetear" "vulcan" "webgo")
 
 #web_frameworks=("beego" "gin" "go-zero" "goframe" "go-doudou(httprouter)")
-web_frameworks=("go-doudou(httprouterfast)" "go-zero")
-#web_frameworks=("go-doudou(httprouter)" "go-zero")
+web_frameworks=("go-doudou(httprouter)" "go-zero")
 

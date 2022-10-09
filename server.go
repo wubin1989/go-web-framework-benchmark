@@ -235,8 +235,6 @@ func main() {
 		startGoyave()
 	case "go-doudou(httprouter)":
 		startGoDoudouHttprouter()
-	case "go-doudou(httprouterfast)":
-		startGoDoudouHttprouterFast()
 	default:
 		fmt.Println("--------------------------------------------------------------------")
 		fmt.Println("------------- Unknown framework given!!! Check libs.sh -------------")
@@ -1313,24 +1311,14 @@ func ddhttpRouterHandler(w http.ResponseWriter, _ *http.Request, ps ddhttprouter
 func startGoDoudouHttprouter() {
 	os.Setenv("GDD_ENV", "test")
 	defer os.Unsetenv("GDD_ENV")
-	os.Setenv("GDD_PORT", strconv.Itoa(port))
-	defer os.Unsetenv("GDD_PORT")
-	mux := ddhttp.NewHttpRouterSrv()
-	mux.Router.GET("/hello", ddhttpRouterHandler)
-	mux.Run()
-}
-
-func startGoDoudouHttprouterFast() {
-	os.Setenv("GDD_ENV", "test")
-	defer os.Unsetenv("GDD_ENV")
 	os.Setenv("GDD_ROUTER_SAVEMATCHEDROUTEPATH", "false")
 	defer os.Unsetenv("GDD_ROUTER_SAVEMATCHEDROUTEPATH")
-	os.Setenv("GDD_MANAGE_ENABLE", "false")
-	defer os.Unsetenv("GDD_MANAGE_ENABLE")
 	os.Setenv("GDD_PORT", strconv.Itoa(port))
 	defer os.Unsetenv("GDD_PORT")
-	mux := ddhttp.NewFastHttpSrv()
-	mux.RootRouter().GET("/hello", fastHTTPHandler)
+	os.Setenv("GDD_MANAGE_ENABLE", "false")
+	defer os.Unsetenv("GDD_MANAGE_ENABLE")
+	mux := ddhttp.NewHttpRouterSrv()
+	mux.Router.GET("/hello", ddhttpRouterHandler)
 	mux.Run()
 }
 
