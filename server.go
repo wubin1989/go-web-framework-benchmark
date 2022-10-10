@@ -94,7 +94,8 @@ var (
 func main() {
 	args := os.Args
 	argsLen := len(args)
-	webFramework := "default"
+	//webFramework := "default"
+	webFramework := "go-doudou(httprouter)"
 	if argsLen > 1 {
 		webFramework = args[1]
 	}
